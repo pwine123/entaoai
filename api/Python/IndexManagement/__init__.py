@@ -1,36 +1,16 @@
 import logging, json, os
 import azure.functions as func
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-import tempfile
-import uuid
-from langchain.document_loaders import (
-    PDFMinerLoader,
-    PyMuPDFLoader,
-    UnstructuredFileLoader,
-    UnstructuredPDFLoader,
-)
 import os
-from langchain.vectorstores import Pinecone
-from langchain.vectorstores import Milvus
-import pinecone
-from langchain.document_loaders import PDFMinerLoader
-# from pymilvus import connections
-# from pymilvus import CollectionSchema, FieldSchema, DataType, Collection
-# from pymilvus import utility
-import time
-from langchain.vectorstores.redis import Redis
-from langchain.document_loaders import WebBaseLoader
-from langchain.chains.summarize import load_summarize_chain
-from langchain.prompts import PromptTemplate
-from langchain.chains.qa_with_sources import load_qa_with_sources_chain
+from langchain_pinecone import PineconeVectorStore
+from langchain_community.vectorstores.milvus import Milvus
+from pinecone import Pinecone
+from langchain_community.document_loaders.pdf import PDFMinerLoader
+from langchain_community.vectorstores.redis import Redis
 #from langchain.vectorstores import Weaviate
 from Utilities.azureBlob import upsertMetadata, getBlob, getAllBlobs, getSasToken, getFullPath
 from Utilities.cogSearch import createSearchIndex, createSections, indexSections, deleteSearchIndex
-from langchain.document_loaders import AzureBlobStorageFileLoader
-from langchain.document_loaders import AzureBlobStorageContainerLoader
 from azure.storage.blob import BlobClient
-from azure.storage.blob import ContainerClient
-import boto3
 from Utilities.envVars import *
 
 try:
@@ -65,10 +45,8 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
 
     if body:
         if len(PineconeKey) > 10 and len(PineconeEnv) > 10:
-            pinecone.init(
-                api_key=PineconeKey,  # find at app.pinecone.io
-                environment=PineconeEnv  # next to api key in console
-            )
+            os.environ["PINECONE_API_KEY"] = PineconeKey
+            pc = Pinecone(api_key=PineconeKey, host=PineconeEnv)
         result = ComposeResponse(indexType, indexName, blobName, indexNs, operation, body)
         return func.HttpResponse(result, mimetype="application/json")
     else:
@@ -97,7 +75,8 @@ def IndexManagement(indexType, indexName, blobName, indexNs, operation, record):
             logging.info("Deleting index " + indexNs)
             if indexType == "pinecone":
                 if (indexNs != '' or indexNs != None):
-                    index = pinecone.Index(VsIndexName)
+                    pc = Pinecone(api_key=PineconeKey)
+                    index = Pinecone.Index(pc, name=VsIndexName)
                     index.delete(delete_all=True, namespace=indexNs)
             elif indexType == "redis":
                 Redis.drop_index(index_name=indexNs, delete_documents=True, redis_url=redisUrl)

@@ -1,30 +1,62 @@
-AGENTQA_URL=http://localhost:7071/api/AgentQa?code=
-BLOB_CONNECTION_STRING=
-BLOB_CONTAINER_NAME=chatpdf
-BLOB_SUMMARY_CONTAINER_NAME=summary
-CHAT_URL=http://localhost:7071/api/ChatGpt?code=
-CONVERTCODE_URL=http://localhost:7071/api/ConvertCode?code=
-DOCGENERATOR_URL=http://localhost:7071/api/DocGenerator?code=
-INDEXMANAGEMENT_URL=http://localhost:7071/api/IndexManagement?code=
-KBINDEXNAME=aoaikb
-PROMPTGURU_URL=http://localhost:7071/api/PromptGuru?code=
-PROCESSSUMMARY_URL=http://localhost:7071/api/ProcessSummary?code=
-QA_URL=http://localhost:7071/api/QuestionAnswering?code=
-SEARCHSERVICE=dataaioaicg
-SEARCHKEY=
-SECSEARCH_URL=http://localhost:7071/api/SecSearch?code=
-SMARTAGENT_URL=http://localhost:7071/api/SmartAgent?code=
-SPEECH_KEY=
-SPEECH_REGION=southcentralus
-SQLCHAIN_URL=http://localhost:7071/api/SqlChain?code=
-SQLCHAT_URL=http://localhost:7071/api/SqlChat?code=
-SQLVISUAL_URL=http://localhost:7071/api/SqlVisual?code=
-SUMMARIZER_URL=http://localhost:7071/api/Summarizer?code=
-TASKAGENTQA_URL=http://localhost:7071/api/TaskAgentQa?code=
-TEXTANALYTICS_KEY=
-TEXTANALYTICS_REGION=eastus
-VERIFYPASS_URL=http://localhost:7071/api/VerifyPassword?code=
-COSMOSENDPOINT=https://.documents.azure.com:443/
-COSMOSKEY=
-COSMOSDATABASE=aoai
-COSMOSCONTAINER=chatgpt
+##################
+#### Backend URL
+##################
+QA_URL="http://localhost:7071/api/QuestionAnswering?code="
+VERIFYPASS_URL="http://localhost:7071/api/VerifyPassword?code="
+INDEXMANAGEMENT_URL="http://localhost:7071/api/IndexManagement?code="
+CHAT_URL="http://localhost:7071/api/ChatGpt?code="
+DOCGENERATOR_URL="http://localhost:7071/api/DocGenerator?code="
+CHATGPT_URL="http://localhost:7071/api/OpenChatGpt?code="
+
+##################
+#### Blob Storage
+##################
+BLOB_CONNECTION_STRING="" # Name of your Blob connection string where you will upload PDF to
+BLOB_CONTAINER_NAME="chatpdf" # Name of your container to host uploaded files
+BLOB_VIDEO_CONTAINER_NAME="videos"
+
+##################
+#### Azure Speech
+##################
+SPEECH_REGION="" # Your speech service  region 
+SPEECH_KEY="" # Your speech service key
+
+##################
+#### Search Service
+##################
+SEARCHSERVICE=""
+SEARCHKEY=""
+KBINDEXNAME="aoaikb"
+
+##################
+#### Cosmos DB
+##################
+COSMOSENDPOINT="https://<>.documents.azure.com:443/"
+COSMOSKEY=""
+COSMOSDATABASE="aoai"
+COSMOSCONTAINER="chatgpt"
+
+##################
+#### OpenAI
+##################
+OpenAiKey=""
+OpenAiEndPoint="https://.openai.azure.com/"
+OpenAiApiKey=""
+OpenAiChat="chat"
+OpenAiChat16k="chat16k"
+OpenAiVersion="2023-07-01-preview"
+OpenAiEmbedding="embedding"
+
+##################
+#### Redis
+##################
+RedisPassword=""
+RedisAddress=""
+RedisPort="6379"
+
+##################
+#### Pinecone
+##################
+PineconeKey=""
+PineconeEnv="us-east-1-aws"
+VsIndexName="oaiembed"

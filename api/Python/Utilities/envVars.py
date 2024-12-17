@@ -20,37 +20,7 @@ try:
         KbIndexName = os.environ['KbIndexName']
     else:
         KbIndexName = "aoaikb"
-
-    if "OpenAiEvaluatorContainer" in os.environ: 
-        OpenAiEvaluatorContainer = os.environ['OpenAiEvaluatorContainer']
-    else:
-        OpenAiEvaluatorContainer = "evaluator"
-
-    if "OpenAiSummaryContainer" in os.environ: 
-        OpenAiSummaryContainer = os.environ['OpenAiSummaryContainer']
-    else:
-        OpenAiSummaryContainer = "summary"
-
-    if "FmpKey" in os.environ: 
-        FmpKey = os.getenv('FmpKey')
-    else:
-        FmpKey = ""
-    
-    if "SecExtractionUrl" in os.environ: 
-        SecExtractionUrl = os.getenv('SecExtractionUrl')
-    else:
-        SecExtractionUrl = ""
-
-    if "SecDocPersistUrl" in os.environ: 
-        SecDocPersistUrl = os.getenv('SecDocPersistUrl')
-    else:
-        SecDocPersistUrl = ""
-    
-    if "SecDocContainer" in os.environ: 
-        SecDocContainer = os.environ['SecDocContainer']
-    else:
-        SecDocContainer = ""
-
+        
     if "PineconeEnv" in os.environ: 
         PineconeEnv = os.environ['PineconeEnv']
     else:
@@ -136,16 +106,6 @@ try:
     else:
         AdminPassword = "P@ssw0rd"
 
-    if "ChromaUrl" in os.environ: 
-        ChromaUrl = os.environ['ChromaUrl']
-    else:
-        ChromaUrl = ""
-
-    if "ChromaPort" in os.environ: 
-        ChromaPort = os.environ['ChromaPort']
-    else:
-        ChromaPort = ""
-
     if "OpenAiApiKey" in os.environ: 
         OpenAiApiKey = os.environ['OpenAiApiKey']
     else:
@@ -161,26 +121,6 @@ try:
     else:
         FormRecognizerEndPoint = ""
     
-    if "SynapseName" in os.environ: 
-        SynapseName = os.environ['SynapseName']
-    else:
-        SynapseName = ""
-
-    if "SynapseUser" in os.environ: 
-        SynapseUser = os.environ['SynapseUser']
-    else:
-        SynapseUser = ""
-
-    if "SynapsePassword" in os.environ: 
-        SynapsePassword = os.environ['SynapsePassword']
-    else:
-        SynapsePassword = ""
-
-    if "SynapsePool" in os.environ: 
-        SynapsePool = os.environ['SynapsePool']
-    else:
-        SynapsePool = ""
-
     if "WeatherEndPoint" in os.environ: 
         WeatherEndPoint = os.getenv('WeatherEndPoint')
     else:

@@ -6,6 +6,12 @@ The repo provides a way to upload your own data so it's ready to try end to end.
 
 ## Updates
 
+* 3/30/2024 - Refactored to keep on Chat, Chat Stream, QnA, Upload and Admin functionality.  All others will be moved to it's own repo.
+* 3/10/2024 - Move the Prompt Flow version to [entaoaipf](https://github.com/akshata29/entaoaipf)
+* 3/9/2024 - Initial version of advanced RAG techniques and Multi-modal RAG pattern
+* 2/28/2024 - Removed SEC analysis features and it's moved into it's own repo at [sec](https://github.com/akshata29/sec)
+* 1/28/2024 - Remove PitchBook features as they are moved into it's own repo at [pib](https://github.com/akshata29/pitchbook)
+* 1/19/2024 - Updated the python package & OpenAI > 1.0.  Changes made to all Python API for breaking changes introduced in OpenAI and langchain.
 * 10/12/2023 - Initial version of [Autonomous](./api/PromptFlow/Autonomous/) PromptFlow.  For now supporting the Pinecone indexes, but support for Cognitive Search and Redis will be updated soon.
 * 9/29/2023 - Added [Evaluate](./api/PromptFlow/Evaluate/) PromptFlow.  Prompt Flow once created in Azure ML, can be attached to your existing run to evaluate against the following evaluation process :
   * Groundness - The Q&A Groundedness evaluation flow will evaluate the Q&A Retrieval Augmented Generation systems by leveraging the state-of-the-art Large Language Models (LLM) to measure the quality and safety of your responses. Utilizing GPT-3.5 as the Language Model to assist with measurements aims to achieve a high agreement with human evaluations compared to traditional mathematical measurements. gpt_groundedness (against context): Measures how grounded the model's predicted answers are against the context. Even if LLM’s responses are true, if not verifiable against context, then such responses are considered ungrounded.
@@ -88,10 +94,6 @@ Groundedness metric is scored on a scale of 1 to 5, with 1 being the worst and 5
 ## Azure Architecture
 
 ![Azure Services](/assets/AskChat.png)
-
-## PIB Architecture
-
-![PIB Architecture](/assets/PIB.png)
 
 ## QA over your data with Cache
 
